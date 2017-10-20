@@ -2,45 +2,158 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Data.SQLite;
+using System.Data;
 
 namespace Catteries
 {
     public partial class FormCatInfo : Form
     {
         FormMain.FormCatInfoModes mode;
+        string db_name;
+        Cat cat;
+        Cattery cattery;
 
-        public FormCatInfo(string title, FormMain.FormCatInfoModes mode)
+        public FormCatInfo(string db_name, string title, FormMain.FormCatInfoModes mode)
         {
             InitializeComponent();
             this.Text = title;
             this.mode = mode;
+            this.db_name = db_name;
+        }
+
+        public FormCatInfo(string db_name, string title, FormMain.FormCatInfoModes mode, Cat cat)
+        {
+            InitializeComponent();
+            this.Text = title;
+            this.mode = mode;
+            this.db_name = db_name;
+            this.cat = cat;
+            button1.Text = "Сохранить изменения";
+        }
+
+        public FormCatInfo(string db_name, string title, FormMain.FormCatInfoModes mode, Cattery cattery)
+        {
+            InitializeComponent();
+            this.Text = title;
+            this.mode = mode;
+            this.db_name = db_name;
+            this.cattery = cattery;
+            this.cat = cattery.Partner;
+            button1.Text = "Сохранить изменения";
         }
 
         private void FormCatInfo_Load(object sender, EventArgs e)
         {
+            if (mode == FormMain.FormCatInfoModes.ChangeInfo)
+            {
+                textBoxName.Text = cat.Name;
+                textBoxEarsCode.Text = cat.EarsTypeCode;
+                textBoxColorCode.Text = cat.ColorCode;
+                dateTimePickerBday.Value = cat.BirthDate;
+            }
+            if (mode != FormMain.FormCatInfoModes.NewPartner & mode != FormMain.FormCatInfoModes.PartnerInfo)
+            {
+                groupBox1.Visible = false;
+                this.Width = 391;
+                this.Height = 187;
+            }
+            if (mode == FormMain.FormCatInfoModes.PartnerInfo)
+            {
+                string dataBase = System.IO.Path.Combine(Application.StartupPath, "catsdb2.db");
+                if (File.Exists(dataBase))
+                {
+                    using (var connection = new SQLiteConnection(String.Format("Data Source={0};", dataBase)))
+                    {
+                        //SQLiteCommand cmd = new SQLiteCommand("SELECT * FROM 'cat_partners' WHERE 'ID' = " + cattery.PartnerID, connection);
+                        //SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
+                        //DataSet sds = new DataSet();
+                        //sda.Fill(sds);
+                        //foreach (DataRow row in sds.Tables[0].Rows)
+                        //{
+                        //    textBoxName.Text = row["Name"].ToString();
+                        //    textBoxEarsCode.Text = row["EarsTypeCode"].ToString();
+                        //    textBoxColorCode.Text = row["ColorCode"].ToString();
+                        //    dateTimePickerBday.Value = Convert.ToDateTime(row["BirthDate"]);
+                        //}
+                        textBoxName.Text = cat.Name;
+                        textBoxEarsCode.Text = cat.EarsTypeCode;
+                        textBoxColorCode.Text = cat.ColorCode;
+                        dateTimePickerBday.Value = cat.BirthDate;
 
+                        SQLiteCommand cmd = new SQLiteCommand("SELECT * FROM 'cats_owners' WHERE catid = " + cattery.PartnerID, connection);
+                        SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
+                        DataSet sds = new DataSet();                        
+                        sda.Fill(sds);
+                        foreach (DataRow row in sds.Tables[0].Rows)
+                        {
+                            textBoxOwnerName.Text = row["Name"].ToString();
+                            textBoxOwnerContacts.Text = row["PhoneNumber"].ToString();
+                            textBoxOwnerAddress.Text = row["Address"].ToString();
+                        }
+                    }
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            switch (mode)
+            string dataBase = System.IO.Path.Combine(Application.StartupPath, "catsdb2.db");
+            if (File.Exists(dataBase))
             {
-                case FormMain.FormCatInfoModes.NewPet:
-                    string dataBase = System.IO.Path.Combine(Application.StartupPath, "catsdb2.db");
-                    if (File.Exists(dataBase))
+                using (var connection = new SQLiteConnection(String.Format("Data Source={0};", dataBase)))
+                {
+                    SQLiteCommand cmd;
+                    connection.Open();
+                    switch (mode)
                     {
-                        using (var connection = new SQLiteConnection(String.Format("Data Source={0};", dataBase)))
-                        {
-                            connection.Open();
-                            SQLiteCommand cmd = new SQLiteCommand(
-                                String.Format("INSERT INTO 'my_pets' (Name, BirthDate, ColorCode, EarsTypeCode) values ('{0}', '{1}', '{2}', '{3}')",
+                        case FormMain.FormCatInfoModes.NewPet:
+                            cmd = new SQLiteCommand(
+                                String.Format("INSERT INTO '" + db_name + "' (Name, BirthDate, ColorCode, EarsTypeCode) values ('{0}', '{1}', '{2}', '{3}')",
                                 textBoxName.Text, dateTimePickerBday.Value.ToString("yyyy-MM-dd"), textBoxColorCode.Text, textBoxEarsCode.Text), connection);
                             cmd.ExecuteNonQuery();
-                            connection.Close();
-                        }
+                            break;
+                        case FormMain.FormCatInfoModes.ChangeInfo:
+                            cmd = new SQLiteCommand(
+                                String.Format("UPDATE '" + db_name + "' SET Name = '{0}', BirthDate = '{1}', ColorCode = '{2}', EarsTypeCode = '{3}' where ID = " + cat.Id,
+                                textBoxName.Text, dateTimePickerBday.Value.ToString("yyyy-MM-dd"), textBoxColorCode.Text, textBoxEarsCode.Text), connection);
+                            cmd.ExecuteNonQuery();
+                            break;
+                        case FormMain.FormCatInfoModes.NewPartner:
+                            cmd = new SQLiteCommand(
+                                String.Format("INSERT INTO '" + db_name + "' (Name, BirthDate, ColorCode, EarsTypeCode) values ('{0}', '{1}', '{2}', '{3}')",
+                                textBoxName.Text, dateTimePickerBday.Value.ToString("yyyy-MM-dd"), textBoxColorCode.Text, textBoxEarsCode.Text), connection);
+                            cmd.ExecuteNonQuery();
+                            cmd.CommandText = "SELECT max(ID) FROM 'cat_partners'";
+                            int cid = Convert.ToInt32(cmd.ExecuteScalar());
+                            cmd.CommandText = String.Format("INSERT INTO 'cats_owners' (Name, PhoneNumber, Address, CatID) VALUES ('{0}', '{1}', '{2}', {3})",
+                                textBoxOwnerName.Text, textBoxOwnerContacts.Text, textBoxOwnerAddress.Text, cid);
+                            break;
+                        case FormMain.FormCatInfoModes.PartnerInfo:
+                            cmd = new SQLiteCommand(
+                                String.Format("UPDATE '" + db_name + "' SET Name = '{0}', BirthDate = '{1}', ColorCode = '{2}', EarsTypeCode = '{3}' where ID = " + cat.Id,
+                                textBoxName.Text, dateTimePickerBday.Value.ToString("yyyy-MM-dd"), textBoxColorCode.Text, textBoxEarsCode.Text), connection);
+                            cmd.ExecuteNonQuery();
+                            cmd.CommandText = "SELECT ID FROM 'cats_owners' WHERE CatID = " + cat.Id;
+                            object res = cmd.ExecuteScalar();
+                            int id = (res != null) ? Convert.ToInt32(res) : -1;
+                            if (id != -1)
+                            {
+                                cmd.CommandText = String.Format("UPDATE 'cats_owners' SET Name = '{0}', PhoneNumber = '{1}', Address = '{2}' WHERE CatID = " + cat.Id,
+                                    textBoxOwnerName.Text, textBoxOwnerContacts.Text, textBoxOwnerAddress.Text);
+                                cmd.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                cmd.CommandText = String.Format("INSERT INTO 'cats_owners' (Name, PhoneNumber, Address, catID) VALUES ('{0}', '{1}', '{2}', {3})",
+                                textBoxOwnerName.Text, textBoxOwnerContacts.Text, textBoxOwnerAddress.Text, cat.Id);
+                                cmd.ExecuteNonQuery();
+                            }
+                            break;
                     }
-                    break;
+                    connection.Close();
+                }
             }
+            Close();
         }
     }
 }

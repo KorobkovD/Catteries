@@ -30,22 +30,19 @@
         {
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.panelPets = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.listBoxPets = new System.Windows.Forms.ListBox();
-            this.pictureBoxPet = new System.Windows.Forms.PictureBox();
-            this.labelPetName = new System.Windows.Forms.Label();
-            this.labelPetBday = new System.Windows.Forms.Label();
-            this.labelPetColorCode = new System.Windows.Forms.Label();
-            this.labelPetEarsCode = new System.Windows.Forms.Label();
-            this.buttonChangePetInfo = new System.Windows.Forms.Button();
-            this.buttonAddCatPartner = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.listBoxCatteries = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonAddCatPartner = new System.Windows.Forms.Button();
+            this.pictureBoxPet = new System.Windows.Forms.PictureBox();
+            this.labelPetColorCode = new System.Windows.Forms.Label();
+            this.buttonChangePetInfo = new System.Windows.Forms.Button();
+            this.labelPetBday = new System.Windows.Forms.Label();
+            this.labelPetName = new System.Windows.Forms.Label();
+            this.labelPetEarsCode = new System.Windows.Forms.Label();
+            this.listBoxPets = new System.Windows.Forms.ListBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.buttonPartnerInfo = new System.Windows.Forms.Button();
             this.buttonAddKitty = new System.Windows.Forms.Button();
             this.pictureBoxPartner = new System.Windows.Forms.PictureBox();
             this.labelPartnerColorCode = new System.Windows.Forms.Label();
@@ -53,6 +50,9 @@
             this.labelPartnerBday = new System.Windows.Forms.Label();
             this.labelPartnerName = new System.Windows.Forms.Label();
             this.labelPartnerEarsCode = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.listBoxCatteries = new System.Windows.Forms.ListBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBoxKitty = new System.Windows.Forms.PictureBox();
             this.labelKittyColorCode = new System.Windows.Forms.Label();
@@ -60,21 +60,21 @@
             this.labelKittyBday = new System.Windows.Forms.Label();
             this.labelKittyName = new System.Windows.Forms.Label();
             this.labelKittyEarsCode = new System.Windows.Forms.Label();
-            this.listBoxKitties = new System.Windows.Forms.ListBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.listBoxKitties = new System.Windows.Forms.ListBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.новыйПитомецToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanelMain.SuspendLayout();
             this.panelPets.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPet)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPet)).BeginInit();
+            this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPartner)).BeginInit();
+            this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKitty)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanelMain
@@ -106,115 +106,15 @@
             this.panelPets.Size = new System.Drawing.Size(273, 449);
             this.panelPets.TabIndex = 0;
             // 
-            // panel1
+            // label1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.listBoxCatteries);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(282, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(273, 449);
-            this.panel1.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.listBoxKitties);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(561, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(274, 449);
-            this.panel2.TabIndex = 1;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.новыйПитомецToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(838, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // listBoxPets
-            // 
-            this.listBoxPets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBoxPets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listBoxPets.FormattingEnabled = true;
-            this.listBoxPets.ItemHeight = 20;
-            this.listBoxPets.Location = new System.Drawing.Point(3, 23);
-            this.listBoxPets.Name = "listBoxPets";
-            this.listBoxPets.Size = new System.Drawing.Size(267, 304);
-            this.listBoxPets.TabIndex = 0;
-            this.listBoxPets.SelectedIndexChanged += new System.EventHandler(this.listBoxPets_SelectedIndexChanged);
-            // 
-            // pictureBoxPet
-            // 
-            this.pictureBoxPet.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxPet.Name = "pictureBoxPet";
-            this.pictureBoxPet.Size = new System.Drawing.Size(115, 110);
-            this.pictureBoxPet.TabIndex = 1;
-            this.pictureBoxPet.TabStop = false;
-            // 
-            // labelPetName
-            // 
-            this.labelPetName.AutoSize = true;
-            this.labelPetName.Location = new System.Drawing.Point(124, 3);
-            this.labelPetName.Name = "labelPetName";
-            this.labelPetName.Size = new System.Drawing.Size(73, 13);
-            this.labelPetName.TabIndex = 2;
-            this.labelPetName.Text = "labelPetName";
-            // 
-            // labelPetBday
-            // 
-            this.labelPetBday.AutoSize = true;
-            this.labelPetBday.Location = new System.Drawing.Point(124, 20);
-            this.labelPetBday.Name = "labelPetBday";
-            this.labelPetBday.Size = new System.Drawing.Size(69, 13);
-            this.labelPetBday.TabIndex = 2;
-            this.labelPetBday.Text = "labelPetBday";
-            // 
-            // labelPetColorCode
-            // 
-            this.labelPetColorCode.AutoSize = true;
-            this.labelPetColorCode.Location = new System.Drawing.Point(124, 37);
-            this.labelPetColorCode.Name = "labelPetColorCode";
-            this.labelPetColorCode.Size = new System.Drawing.Size(94, 13);
-            this.labelPetColorCode.TabIndex = 2;
-            this.labelPetColorCode.Text = "labelPetColorCode";
-            // 
-            // labelPetEarsCode
-            // 
-            this.labelPetEarsCode.AutoSize = true;
-            this.labelPetEarsCode.Location = new System.Drawing.Point(124, 54);
-            this.labelPetEarsCode.Name = "labelPetEarsCode";
-            this.labelPetEarsCode.Size = new System.Drawing.Size(91, 13);
-            this.labelPetEarsCode.TabIndex = 2;
-            this.labelPetEarsCode.Text = "labelPetEarsCode";
-            // 
-            // buttonChangePetInfo
-            // 
-            this.buttonChangePetInfo.Location = new System.Drawing.Point(125, 70);
-            this.buttonChangePetInfo.Name = "buttonChangePetInfo";
-            this.buttonChangePetInfo.Size = new System.Drawing.Size(66, 43);
-            this.buttonChangePetInfo.TabIndex = 3;
-            this.buttonChangePetInfo.Text = "Изменить инфо";
-            this.buttonChangePetInfo.UseVisualStyleBackColor = true;
-            // 
-            // buttonAddCatPartner
-            // 
-            this.buttonAddCatPartner.Location = new System.Drawing.Point(196, 70);
-            this.buttonAddCatPartner.Name = "buttonAddCatPartner";
-            this.buttonAddCatPartner.Size = new System.Drawing.Size(66, 43);
-            this.buttonAddCatPartner.TabIndex = 3;
-            this.buttonAddCatPartner.Text = "Добавить вязку";
-            this.buttonAddCatPartner.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(6, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Мои питомцы:";
             // 
             // panel3
             // 
@@ -231,43 +131,100 @@
             this.panel3.Size = new System.Drawing.Size(273, 116);
             this.panel3.TabIndex = 1;
             // 
-            // label1
+            // buttonAddCatPartner
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(6, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Мои питомцы:";
+            this.buttonAddCatPartner.Location = new System.Drawing.Point(196, 70);
+            this.buttonAddCatPartner.Name = "buttonAddCatPartner";
+            this.buttonAddCatPartner.Size = new System.Drawing.Size(66, 43);
+            this.buttonAddCatPartner.TabIndex = 3;
+            this.buttonAddCatPartner.Text = "Добавить вязку";
+            this.buttonAddCatPartner.UseVisualStyleBackColor = true;
+            this.buttonAddCatPartner.Click += new System.EventHandler(this.buttonAddCatPartner_Click);
             // 
-            // listBoxCatteries
+            // pictureBoxPet
             // 
-            this.listBoxCatteries.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pictureBoxPet.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxPet.Name = "pictureBoxPet";
+            this.pictureBoxPet.Size = new System.Drawing.Size(115, 110);
+            this.pictureBoxPet.TabIndex = 1;
+            this.pictureBoxPet.TabStop = false;
+            // 
+            // labelPetColorCode
+            // 
+            this.labelPetColorCode.AutoSize = true;
+            this.labelPetColorCode.Location = new System.Drawing.Point(124, 37);
+            this.labelPetColorCode.Name = "labelPetColorCode";
+            this.labelPetColorCode.Size = new System.Drawing.Size(94, 13);
+            this.labelPetColorCode.TabIndex = 2;
+            this.labelPetColorCode.Text = "labelPetColorCode";
+            // 
+            // buttonChangePetInfo
+            // 
+            this.buttonChangePetInfo.Location = new System.Drawing.Point(125, 70);
+            this.buttonChangePetInfo.Name = "buttonChangePetInfo";
+            this.buttonChangePetInfo.Size = new System.Drawing.Size(66, 43);
+            this.buttonChangePetInfo.TabIndex = 3;
+            this.buttonChangePetInfo.Text = "Изменить инфо";
+            this.buttonChangePetInfo.UseVisualStyleBackColor = true;
+            this.buttonChangePetInfo.Click += new System.EventHandler(this.buttonChangePetInfo_Click);
+            // 
+            // labelPetBday
+            // 
+            this.labelPetBday.AutoSize = true;
+            this.labelPetBday.Location = new System.Drawing.Point(124, 20);
+            this.labelPetBday.Name = "labelPetBday";
+            this.labelPetBday.Size = new System.Drawing.Size(69, 13);
+            this.labelPetBday.TabIndex = 2;
+            this.labelPetBday.Text = "labelPetBday";
+            // 
+            // labelPetName
+            // 
+            this.labelPetName.AutoSize = true;
+            this.labelPetName.Location = new System.Drawing.Point(124, 3);
+            this.labelPetName.Name = "labelPetName";
+            this.labelPetName.Size = new System.Drawing.Size(73, 13);
+            this.labelPetName.TabIndex = 2;
+            this.labelPetName.Text = "labelPetName";
+            // 
+            // labelPetEarsCode
+            // 
+            this.labelPetEarsCode.AutoSize = true;
+            this.labelPetEarsCode.Location = new System.Drawing.Point(124, 54);
+            this.labelPetEarsCode.Name = "labelPetEarsCode";
+            this.labelPetEarsCode.Size = new System.Drawing.Size(91, 13);
+            this.labelPetEarsCode.TabIndex = 2;
+            this.labelPetEarsCode.Text = "labelPetEarsCode";
+            // 
+            // listBoxPets
+            // 
+            this.listBoxPets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBoxCatteries.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listBoxCatteries.FormattingEnabled = true;
-            this.listBoxCatteries.ItemHeight = 20;
-            this.listBoxCatteries.Location = new System.Drawing.Point(3, 23);
-            this.listBoxCatteries.Name = "listBoxCatteries";
-            this.listBoxCatteries.Size = new System.Drawing.Size(267, 304);
-            this.listBoxCatteries.TabIndex = 0;
+            this.listBoxPets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listBoxPets.FormattingEnabled = true;
+            this.listBoxPets.ItemHeight = 20;
+            this.listBoxPets.Location = new System.Drawing.Point(3, 23);
+            this.listBoxPets.Name = "listBoxPets";
+            this.listBoxPets.Size = new System.Drawing.Size(267, 304);
+            this.listBoxPets.TabIndex = 0;
+            this.listBoxPets.SelectedIndexChanged += new System.EventHandler(this.listBoxPets_SelectedIndexChanged);
             // 
-            // label2
+            // panel1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(6, 4);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Вязка с:";
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.listBoxCatteries);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(282, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(273, 449);
+            this.panel1.TabIndex = 1;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.buttonPartnerInfo);
             this.panel4.Controls.Add(this.buttonAddKitty);
             this.panel4.Controls.Add(this.pictureBoxPartner);
             this.panel4.Controls.Add(this.labelPartnerColorCode);
@@ -281,9 +238,19 @@
             this.panel4.Size = new System.Drawing.Size(273, 116);
             this.panel4.TabIndex = 3;
             // 
+            // buttonPartnerInfo
+            // 
+            this.buttonPartnerInfo.Location = new System.Drawing.Point(124, 69);
+            this.buttonPartnerInfo.Name = "buttonPartnerInfo";
+            this.buttonPartnerInfo.Size = new System.Drawing.Size(138, 22);
+            this.buttonPartnerInfo.TabIndex = 4;
+            this.buttonPartnerInfo.Text = "Инфо о жив-м и хоз-х";
+            this.buttonPartnerInfo.UseVisualStyleBackColor = true;
+            this.buttonPartnerInfo.Click += new System.EventHandler(this.buttonPartnerInfo_Click);
+            // 
             // buttonAddKitty
             // 
-            this.buttonAddKitty.Location = new System.Drawing.Point(196, 90);
+            this.buttonAddKitty.Location = new System.Drawing.Point(195, 93);
             this.buttonAddKitty.Name = "buttonAddKitty";
             this.buttonAddKitty.Size = new System.Drawing.Size(66, 20);
             this.buttonAddKitty.TabIndex = 3;
@@ -309,12 +276,13 @@
             // 
             // buttonChangePartnerInfo
             // 
-            this.buttonChangePartnerInfo.Location = new System.Drawing.Point(125, 90);
+            this.buttonChangePartnerInfo.Location = new System.Drawing.Point(124, 93);
             this.buttonChangePartnerInfo.Name = "buttonChangePartnerInfo";
             this.buttonChangePartnerInfo.Size = new System.Drawing.Size(66, 20);
             this.buttonChangePartnerInfo.TabIndex = 3;
             this.buttonChangePartnerInfo.Text = "Изменить";
             this.buttonChangePartnerInfo.UseVisualStyleBackColor = true;
+            this.buttonChangePartnerInfo.Click += new System.EventHandler(this.buttonChangePartnerInfo_Click);
             // 
             // labelPartnerBday
             // 
@@ -342,6 +310,42 @@
             this.labelPartnerEarsCode.Size = new System.Drawing.Size(109, 13);
             this.labelPartnerEarsCode.TabIndex = 2;
             this.labelPartnerEarsCode.Text = "labelPartnerEarsCode";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(6, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Вязка с:";
+            // 
+            // listBoxCatteries
+            // 
+            this.listBoxCatteries.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBoxCatteries.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listBoxCatteries.FormattingEnabled = true;
+            this.listBoxCatteries.ItemHeight = 20;
+            this.listBoxCatteries.Location = new System.Drawing.Point(3, 23);
+            this.listBoxCatteries.Name = "listBoxCatteries";
+            this.listBoxCatteries.Size = new System.Drawing.Size(267, 304);
+            this.listBoxCatteries.TabIndex = 0;
+            this.listBoxCatteries.SelectedIndexChanged += new System.EventHandler(this.listBoxCatteries_SelectedIndexChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.listBoxKitties);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(561, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(274, 449);
+            this.panel2.TabIndex = 1;
             // 
             // panel5
             // 
@@ -411,6 +415,16 @@
             this.labelKittyEarsCode.TabIndex = 2;
             this.labelKittyEarsCode.Text = "labelKittyEarsCode";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(6, 4);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(100, 17);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Котята вязки:";
+            // 
             // listBoxKitties
             // 
             this.listBoxKitties.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -424,24 +438,15 @@
             this.listBoxKitties.Size = new System.Drawing.Size(268, 304);
             this.listBoxKitties.TabIndex = 0;
             // 
-            // label11
+            // menuStrip1
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(6, 4);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(100, 17);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Котята вязки:";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(124, 69);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 20);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Инфо о хозяевах";
-            this.button1.UseVisualStyleBackColor = true;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.новыйПитомецToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(838, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // новыйПитомецToolStripMenuItem
             // 
@@ -463,21 +468,21 @@
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.panelPets.ResumeLayout(false);
             this.panelPets.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPet)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPet)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPartner)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKitty)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -519,7 +524,7 @@
         private System.Windows.Forms.Label labelKittyEarsCode;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ListBox listBoxKitties;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonPartnerInfo;
         private System.Windows.Forms.ToolStripMenuItem новыйПитомецToolStripMenuItem;
     }
 }
