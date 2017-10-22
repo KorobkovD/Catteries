@@ -99,6 +99,7 @@ namespace Catteries
 
         int id;
         int partnerID;
+        int petID;
         Cat partner;
         DateTime date;
         DateTime kittiesBirthday;
@@ -112,6 +113,7 @@ namespace Catteries
         public CatOwner Owner { get => owner; set => owner = value; }
         public int Id { get => id; set => id = value; }
         public int PartnerID { get => partnerID; set => partnerID = value; }
+        public int PetID { get => petID; set => petID = value; }
 
         /// <summary>
         /// Объект вязки
@@ -141,6 +143,7 @@ namespace Catteries
             catch { }
             Price = Convert.ToDouble(row["Price"]);
             PartnerID = Convert.ToInt32(row["CatPartnerID"]);
+            PetID = Convert.ToInt32(row["PetID"]);
         }
     }
 }

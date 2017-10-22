@@ -146,6 +146,7 @@
             this.pictureBoxPet.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxPet.Name = "pictureBoxPet";
             this.pictureBoxPet.Size = new System.Drawing.Size(115, 110);
+            this.pictureBoxPet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxPet.TabIndex = 1;
             this.pictureBoxPet.TabStop = false;
             // 
@@ -262,6 +263,7 @@
             this.pictureBoxPartner.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxPartner.Name = "pictureBoxPartner";
             this.pictureBoxPartner.Size = new System.Drawing.Size(115, 110);
+            this.pictureBoxPartner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxPartner.TabIndex = 1;
             this.pictureBoxPartner.TabStop = false;
             // 
@@ -367,6 +369,7 @@
             this.pictureBoxKitty.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxKitty.Name = "pictureBoxKitty";
             this.pictureBoxKitty.Size = new System.Drawing.Size(115, 110);
+            this.pictureBoxKitty.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxKitty.TabIndex = 1;
             this.pictureBoxKitty.TabStop = false;
             // 

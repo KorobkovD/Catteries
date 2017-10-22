@@ -39,13 +39,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBoxOwnerName = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBoxOwnerContacts = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBoxOwnerAddress = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxOwnerAddress = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxOwnerContacts = new System.Windows.Forms.TextBox();
+            this.textBoxOwnerName = new System.Windows.Forms.TextBox();
+            this.buttonPhoto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -54,34 +55,35 @@
             // 
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(116, 115);
+            this.pictureBox1.Size = new System.Drawing.Size(151, 142);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(229, 13);
+            this.textBoxName.Location = new System.Drawing.Point(264, 12);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(138, 20);
             this.textBoxName.TabIndex = 1;
             // 
             // textBoxColorCode
             // 
-            this.textBoxColorCode.Location = new System.Drawing.Point(229, 65);
+            this.textBoxColorCode.Location = new System.Drawing.Point(264, 64);
             this.textBoxColorCode.Name = "textBoxColorCode";
             this.textBoxColorCode.Size = new System.Drawing.Size(138, 20);
             this.textBoxColorCode.TabIndex = 1;
             // 
             // textBoxEarsCode
             // 
-            this.textBoxEarsCode.Location = new System.Drawing.Point(229, 91);
+            this.textBoxEarsCode.Location = new System.Drawing.Point(264, 90);
             this.textBoxEarsCode.Name = "textBoxEarsCode";
             this.textBoxEarsCode.Size = new System.Drawing.Size(138, 20);
             this.textBoxEarsCode.TabIndex = 1;
             // 
             // dateTimePickerBday
             // 
-            this.dateTimePickerBday.Location = new System.Drawing.Point(229, 39);
+            this.dateTimePickerBday.Location = new System.Drawing.Point(264, 38);
             this.dateTimePickerBday.Name = "dateTimePickerBday";
             this.dateTimePickerBday.Size = new System.Drawing.Size(138, 20);
             this.dateTimePickerBday.TabIndex = 2;
@@ -89,7 +91,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(177, 16);
+            this.label1.Location = new System.Drawing.Point(212, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 3;
@@ -98,7 +100,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(134, 41);
+            this.label2.Location = new System.Drawing.Point(169, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 3;
@@ -107,7 +109,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(155, 68);
+            this.label3.Location = new System.Drawing.Point(190, 67);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 4;
@@ -116,7 +118,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(140, 94);
+            this.label4.Location = new System.Drawing.Point(175, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 13);
             this.label4.TabIndex = 4;
@@ -125,9 +127,9 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(229, 231);
+            this.button1.Location = new System.Drawing.Point(284, 261);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 23);
+            this.button1.Size = new System.Drawing.Size(122, 23);
             this.button1.TabIndex = 5;
             this.button1.Text = "Добавить в базу";
             this.button1.UseVisualStyleBackColor = true;
@@ -142,58 +144,12 @@
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.textBoxOwnerContacts);
             this.groupBox1.Controls.Add(this.textBoxOwnerName);
-            this.groupBox1.Location = new System.Drawing.Point(12, 133);
+            this.groupBox1.Location = new System.Drawing.Point(12, 160);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(355, 97);
+            this.groupBox1.Size = new System.Drawing.Size(394, 97);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Информация о хозяевах";
-            // 
-            // textBoxOwnerName
-            // 
-            this.textBoxOwnerName.Location = new System.Drawing.Point(72, 19);
-            this.textBoxOwnerName.Name = "textBoxOwnerName";
-            this.textBoxOwnerName.Size = new System.Drawing.Size(277, 20);
-            this.textBoxOwnerName.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(34, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Имя:";
-            // 
-            // textBoxOwnerContacts
-            // 
-            this.textBoxOwnerContacts.Location = new System.Drawing.Point(72, 45);
-            this.textBoxOwnerContacts.Name = "textBoxOwnerContacts";
-            this.textBoxOwnerContacts.Size = new System.Drawing.Size(277, 20);
-            this.textBoxOwnerContacts.TabIndex = 0;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(72, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(277, 20);
-            this.textBox2.TabIndex = 0;
-            // 
-            // textBoxOwnerAddress
-            // 
-            this.textBoxOwnerAddress.Location = new System.Drawing.Point(72, 71);
-            this.textBoxOwnerAddress.Name = "textBoxOwnerAddress";
-            this.textBoxOwnerAddress.Size = new System.Drawing.Size(277, 20);
-            this.textBoxOwnerAddress.TabIndex = 0;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 48);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Контакты:";
             // 
             // label7
             // 
@@ -204,11 +160,68 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "Адрес:";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 48);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Контакты:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(34, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(32, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Имя:";
+            // 
+            // textBoxOwnerAddress
+            // 
+            this.textBoxOwnerAddress.Location = new System.Drawing.Point(72, 71);
+            this.textBoxOwnerAddress.Name = "textBoxOwnerAddress";
+            this.textBoxOwnerAddress.Size = new System.Drawing.Size(277, 20);
+            this.textBoxOwnerAddress.TabIndex = 0;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(72, 71);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(277, 20);
+            this.textBox2.TabIndex = 0;
+            // 
+            // textBoxOwnerContacts
+            // 
+            this.textBoxOwnerContacts.Location = new System.Drawing.Point(72, 45);
+            this.textBoxOwnerContacts.Name = "textBoxOwnerContacts";
+            this.textBoxOwnerContacts.Size = new System.Drawing.Size(277, 20);
+            this.textBoxOwnerContacts.TabIndex = 0;
+            // 
+            // textBoxOwnerName
+            // 
+            this.textBoxOwnerName.Location = new System.Drawing.Point(72, 19);
+            this.textBoxOwnerName.Name = "textBoxOwnerName";
+            this.textBoxOwnerName.Size = new System.Drawing.Size(277, 20);
+            this.textBoxOwnerName.TabIndex = 0;
+            // 
+            // buttonPhoto
+            // 
+            this.buttonPhoto.Location = new System.Drawing.Point(172, 130);
+            this.buttonPhoto.Name = "buttonPhoto";
+            this.buttonPhoto.Size = new System.Drawing.Size(106, 23);
+            this.buttonPhoto.TabIndex = 7;
+            this.buttonPhoto.Text = "Изменить фото";
+            this.buttonPhoto.UseVisualStyleBackColor = true;
+            this.buttonPhoto.Click += new System.EventHandler(this.buttonPhoto_Click);
+            // 
             // FormCatInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 262);
+            this.ClientSize = new System.Drawing.Size(414, 292);
+            this.Controls.Add(this.buttonPhoto);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -252,5 +265,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBoxOwnerContacts;
         private System.Windows.Forms.TextBox textBoxOwnerName;
+        private System.Windows.Forms.Button buttonPhoto;
     }
 }

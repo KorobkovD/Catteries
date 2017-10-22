@@ -48,7 +48,6 @@ namespace Catteries
             {
                 textBoxPrice.Text = cattery.Price.ToString();
                 dateTimePicker1.Value = cattery.Date;
-                MessageBox.Show(cat_ids.IndexOf(cattery.PartnerID).ToString());
                 comboBoxPartners.SelectedIndex = cat_ids.IndexOf(cattery.PartnerID);
             }
         }
@@ -98,14 +97,15 @@ namespace Catteries
                             break;
                         case FormMain.FormCatInfoModes.ChangeInfo:
                             cmd = new SQLiteCommand(
-                                String.Format("UPDATE 'catteries' SET PetID = {0}, CatPartnerID = {1}, Date = '{2}', Price = '{3}'",
-                                petID, cat_ids[comboBoxPartners.SelectedIndex], dateTimePicker1.Value.ToString("yyyy-MM-dd"), textBoxPrice.Text), connection);
+                                String.Format("UPDATE 'catteries' SET PetID = {0}, CatPartnerID = {1}, Date = '{2}', Price = '{3}' WHERE ID = " + cattery.Id,
+                                cattery.PetID, cat_ids[comboBoxPartners.SelectedIndex], dateTimePicker1.Value.ToString("yyyy-MM-dd"), textBoxPrice.Text), connection);
                             cmd.ExecuteNonQuery();
                             break;
                     }
                     connection.Close();
                 }
             }
+            Close();
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
