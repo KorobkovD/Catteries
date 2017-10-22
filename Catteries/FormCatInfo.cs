@@ -51,17 +51,33 @@ namespace Catteries
         {
             if (Image != null)
                 pictureBox1.Image = Image;
-            if (mode == FormMain.FormCatInfoModes.ChangeInfo)
-            {
-                textBoxName.Text = cat.Name;
-                textBoxEarsCode.Text = cat.EarsTypeCode;
-                textBoxColorCode.Text = cat.ColorCode;
-                dateTimePickerBday.Value = cat.BirthDate;
-            }
+            textBoxName.Text = cat.Name;
+            textBoxEarsCode.Text = cat.EarsTypeCode;
+            textBoxColorCode.Text = cat.ColorCode;
+            dateTimePickerBday.Value = cat.BirthDate;
+            textBoxEarsName.Text = cat.EarsTypeName;
+            textBoxColorName.Text = cat.ColorName;
+            if (cat.IsMale)
+                radioButtonMale.Checked = true;
+            else
+                radioButtonFemale.Checked = true;
+            //if (mode == FormMain.FormCatInfoModes.ChangeInfo)
+            //{
+            //    textBoxName.Text = cat.Name;
+            //    textBoxEarsCode.Text = cat.EarsTypeCode;
+            //    textBoxColorCode.Text = cat.ColorCode;
+            //    dateTimePickerBday.Value = cat.BirthDate;
+            //    textBoxEarsName.Text = cat.EarsTypeName;
+            //    textBoxColorName.Text = cat.ColorName;
+            //    if (cat.IsMale)
+            //        radioButtonMale.Checked = true;
+            //    else
+            //        radioButtonFemale.Checked = true;
+            //}
             if (mode != FormMain.FormCatInfoModes.NewPartner & mode != FormMain.FormCatInfoModes.PartnerInfo)
             {
                 groupBox1.Visible = false;
-                this.Width = 430;
+                this.Width = 590;
                 this.Height = 200;
             }
             if (mode == FormMain.FormCatInfoModes.PartnerInfo)
@@ -71,10 +87,14 @@ namespace Catteries
                 {
                     using (var connection = new SQLiteConnection(String.Format("Data Source={0};", dataBase)))
                     {
-                        textBoxName.Text = cat.Name;
-                        textBoxEarsCode.Text = cat.EarsTypeCode;
-                        textBoxColorCode.Text = cat.ColorCode;
-                        dateTimePickerBday.Value = cat.BirthDate;
+                        //textBoxName.Text = cat.Name;
+                        //textBoxEarsCode.Text = cat.EarsTypeCode;
+                        //textBoxColorCode.Text = cat.ColorCode;
+                        //dateTimePickerBday.Value = cat.BirthDate;
+                        //textBoxColorName.Text = cat.ColorName;
+                        //textBoxEarsName.Text = cat.EarsTypeName;
+                        //if (cat.IsMale)
+
 
                         SQLiteCommand cmd = new SQLiteCommand("SELECT * FROM 'cats_owners' WHERE catid = " + cattery.PartnerID, connection);
                         SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
@@ -96,6 +116,14 @@ namespace Catteries
             string dataBase = System.IO.Path.Combine(Application.StartupPath, "catsdb2.db");
             if (File.Exists(dataBase))
             {
+                string name = textBoxName.Text;
+                string bDate = dateTimePickerBday.Value.ToString("yyyy-MM-dd");
+                string colorCode = textBoxColorCode.Text;
+                string earsCode = textBoxEarsCode.Text;
+                string colorName = textBoxColorName.Text;
+                string earsName = textBoxEarsName.Text;
+                bool isMale = (radioButtonMale.Checked) ? true : false;
+
                 using (var connection = new SQLiteConnection(String.Format("Data Source={0};", dataBase)))
                 {
                     SQLiteCommand cmd;
@@ -104,8 +132,9 @@ namespace Catteries
                     {
                         case FormMain.FormCatInfoModes.NewPet:
                             cmd = new SQLiteCommand(
-                                String.Format("INSERT INTO '" + db_name + "' (Name, BirthDate, ColorCode, EarsTypeCode) values ('{0}', '{1}', '{2}', '{3}')",
-                                textBoxName.Text, dateTimePickerBday.Value.ToString("yyyy-MM-dd"), textBoxColorCode.Text, textBoxEarsCode.Text), connection);
+                                String.Format("INSERT INTO '" + db_name + "' (Name, BirthDate, ColorCode, EarsTypeCode, EarsTypeName, ColorName, IsMale) " +
+                                "values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')",
+                                name, bDate, colorCode, earsCode, earsName, colorName, isMale), connection);
                             cmd.ExecuteNonQuery();
                             if (imageBuffer != null)
                             {
@@ -118,8 +147,9 @@ namespace Catteries
                             break;
                         case FormMain.FormCatInfoModes.ChangeInfo:
                             cmd = new SQLiteCommand(
-                                String.Format("UPDATE '" + db_name + "' SET Name = '{0}', BirthDate = '{1}', ColorCode = '{2}', EarsTypeCode = '{3}' where ID = " + cat.Id,
-                                textBoxName.Text, dateTimePickerBday.Value.ToString("yyyy-MM-dd"), textBoxColorCode.Text, textBoxEarsCode.Text), connection);
+                                String.Format("UPDATE '" + db_name + "' SET Name = '{0}', BirthDate = '{1}', ColorCode = '{2}', EarsTypeCode = '{3}', " +
+                                "EarsTypeName = '{4}', ColorName = '{5}', IsMale = '{6}' where ID = " + cat.Id,
+                                name, bDate, colorCode, earsCode, earsName, colorName, isMale), connection);
                             cmd.ExecuteNonQuery();
                             cmd.CommandText = "UPDATE '" + db_name + "' SET Image = @photo WHERE ID = " + cat.Id;
                             cmd.Parameters.Add("@photo", DbType.Binary, 8000).Value = imageBuffer;
@@ -127,8 +157,9 @@ namespace Catteries
                             break;
                         case FormMain.FormCatInfoModes.NewPartner:
                             cmd = new SQLiteCommand(
-                                String.Format("INSERT INTO '" + db_name + "' (Name, BirthDate, ColorCode, EarsTypeCode) values ('{0}', '{1}', '{2}', '{3}')",
-                                textBoxName.Text, dateTimePickerBday.Value.ToString("yyyy-MM-dd"), textBoxColorCode.Text, textBoxEarsCode.Text), connection);
+                                String.Format("INSERT INTO '" + db_name + "' (Name, BirthDate, ColorCode, EarsTypeCode, EarsTypeName, ColorName, IsMale) " +
+                                "values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')",
+                                name, bDate, colorCode, earsCode, earsName, colorName, isMale), connection);
                             cmd.ExecuteNonQuery();
                             cmd.CommandText = "SELECT max(ID) FROM 'cat_partners'";
                             int cid = Convert.ToInt32(cmd.ExecuteScalar());
@@ -141,8 +172,9 @@ namespace Catteries
                             break;
                         case FormMain.FormCatInfoModes.PartnerInfo:
                             cmd = new SQLiteCommand(
-                                String.Format("UPDATE '" + db_name + "' SET Name = '{0}', BirthDate = '{1}', ColorCode = '{2}', EarsTypeCode = '{3}' where ID = " + cat.Id,
-                                textBoxName.Text, dateTimePickerBday.Value.ToString("yyyy-MM-dd"), textBoxColorCode.Text, textBoxEarsCode.Text), connection);
+                                String.Format("UPDATE '" + db_name + "' SET Name = '{0}', BirthDate = '{1}', ColorCode = '{2}', EarsTypeCode = '{3}', " +
+                                "EarsTypeName = '{4}', ColorName = '{5}', IsMale = '{6}' where ID = " + cat.Id,
+                                name, bDate, colorCode, earsCode, earsName, colorName, isMale), connection);
                             cmd.ExecuteNonQuery();
                             cmd.CommandText = "UPDATE '" + db_name + "' SET Image = @photo WHERE ID = " + cat.Id;
                             cmd.Parameters.Add("@photo", DbType.Binary, 8000).Value = imageBuffer;
@@ -181,6 +213,11 @@ namespace Catteries
                 pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                 imageBuffer = ms.ToArray();
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

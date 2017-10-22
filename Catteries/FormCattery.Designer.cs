@@ -134,6 +134,7 @@
             this.Controls.Add(this.comboBoxPartners);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormCattery";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Параметры вязки";
             this.Load += new System.EventHandler(this.FormCattery_Load);
             this.ResumeLayout(false);

@@ -34,6 +34,7 @@ namespace Catteries
             labelPartnerBday.Text = labelPartnerColorCode.Text = labelPartnerEarsCode.Text = labelPartnerName.Text = String.Empty;
             labelKittyBday.Text = labelKittyColorCode.Text = labelKittyEarsCode.Text = labelKittyName.Text = String.Empty;
             pictureBoxPet.Image = pictureBoxPartner.Image = pictureBoxKitty.Image = null;
+            pictureBoxPetGender.Image = pictureBoxPartnerGender.Image = pictureBoxKittyGender.Image = null;
 
             listBoxPets.Items.Clear();
             listBoxCatteries.Items.Clear();
@@ -79,9 +80,13 @@ namespace Catteries
                 int index = listBoxPets.SelectedIndex;
                 labelPetName.Text = cats[index].Name;
                 labelPetBday.Text = cats[index].BirthDate.ToShortDateString();
-                labelPetColorCode.Text = cats[index].ColorCode;
-                labelPetEarsCode.Text = cats[index].EarsTypeCode;
+                labelPetColorCode.Text = String.Format("{0} ({1})", cats[index].ColorName, cats[index].ColorCode);
+                labelPetEarsCode.Text = String.Format("{0} ({1})", cats[index].EarsTypeName, cats[index].EarsTypeCode);
                 pictureBoxPet.Image = ByteToImage(petsImages[index]);
+                if (cats[index].IsMale)
+                    pictureBoxPetGender.Image = Properties.Resources.male;
+                else
+                    pictureBoxPetGender.Image = Properties.Resources.female;
 
                 listBoxCatteries.Items.Clear();
                 catteries.Clear();
@@ -201,10 +206,14 @@ namespace Catteries
             {
                 int index = listBoxCatteries.SelectedIndex;
                 labelPartnerName.Text = catteries[index].Partner.Name;
-                labelPartnerEarsCode.Text = catteries[index].Partner.EarsTypeCode;
-                labelPartnerColorCode.Text = catteries[index].Partner.ColorCode;
+                labelPartnerEarsCode.Text = String.Format("{0} ({1})", catteries[index].Partner.EarsTypeName, catteries[index].Partner.EarsTypeCode);
+                labelPartnerColorCode.Text = String.Format("{0} ({1})", catteries[index].Partner.ColorName, catteries[index].Partner.ColorCode);
                 labelPartnerBday.Text = catteries[index].Partner.BirthDate.ToShortDateString();
                 pictureBoxPartner.Image = ByteToImage(partnersImages[index]);
+                if (catteries[index].Partner.IsMale)
+                    pictureBoxPartnerGender.Image = Properties.Resources.male;
+                else
+                    pictureBoxPartnerGender.Image = Properties.Resources.female;
             }
         }
     }
