@@ -36,7 +36,7 @@ namespace Catteries
 
         private void buttonAddPartner_Click(object sender, EventArgs e)
         {
-            FormCatInfo fci = new FormCatInfo("cat_partners", "Новый партнер", FormMain.FormCatInfoModes.NewPartner);
+            FormCatInfo fci = new FormCatInfo("cat_partners", "Новый партнер", FormMain.FormCatInfoModes.NewPartnerOrKitty);
             fci.ShowDialog();
             Initialize();
         }
@@ -62,7 +62,9 @@ namespace Catteries
                 using (var connection = new SQLiteConnection(String.Format("Data Source={0};", dataBase)))
                 {
                     connection.Open();
-                    SQLiteCommand cmd = new SQLiteCommand("SELECT * FROM 'cat_partners'", connection);
+                    SQLiteCommand cmd = new SQLiteCommand(
+                        string.Format("SELECT * FROM 'cat_partners' WHERE IsMale IS NOT " +
+                        "(SELECT IsMale FROM 'my_pets' where ID = {0})", petID), connection);
                     SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
                     DataSet sds = new DataSet();
                     sda.Fill(sds);

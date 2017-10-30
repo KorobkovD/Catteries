@@ -20,7 +20,7 @@ namespace Catteries
         List<byte[]> petsImages = new List<byte[]>();         // изображения питомцев
         List<byte[]> partnersImages = new List<byte[]>();     // изображения партнеров
         List<byte[]> kittiesImages = new List<byte[]>();     // изображения котят
-        public enum FormCatInfoModes { NewPet, NewPartner, PartnerInfo, NewKitty, ChangeInfo, NewItem };    // режимы запуска окна с информацией о кошке
+        public enum FormCatInfoModes { NewPet, NewPartnerOrKitty, PartnerOrKittyInfo, ChangeInfo, NewItem };    // режимы запуска окна с информацией о кошке
 
         public FormMain()
         {
@@ -28,17 +28,39 @@ namespace Catteries
             Initialize();
         }
 
+        private bool CheckAndCreateDBPathes()
+        {
+            bool result = false;
+            try
+            {
+                string pathToDB = Application.StartupPath;
+                string dataBase = Path.Combine(pathToDB, "catsdb2.db");           
+                if (!File.Exists(dataBase))
+                    System.IO.File.WriteAllBytes(dataBase, Properties.Resources.catsdb);
+                result = true;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Произошла ошибка при создании папки к БД:\n" + exc.Message);
+                result = false;
+            }
+            return result;
+        }
+
         void Initialize()
         {
-            labelPetBday.Text = labelPetColorCode.Text = labelPetEarsCode.Text = labelPetName.Text = String.Empty;
-            labelPartnerBday.Text = labelPartnerColorCode.Text = labelPartnerEarsCode.Text = labelPartnerName.Text = String.Empty;
-            labelKittyBday.Text = labelKittyColorCode.Text = labelKittyEarsCode.Text = labelKittyName.Text = String.Empty;
+            labelPetBday.Text = textBoxPetColorCode.Text = textBoxPetEarsCode.Text = labelPetName.Text = String.Empty;
+            labelPartnerBday.Text = textBoxPartnerColorCode.Text = textBoxPartnerEarsCode.Text = labelPartnerName.Text = String.Empty;
+            labelKittyBday.Text = textBoxKittyColorCode.Text = textBoxKittyEarsCode.Text = labelKittyName.Text = String.Empty;
             pictureBoxPet.Image = pictureBoxPartner.Image = pictureBoxKitty.Image = null;
             pictureBoxPetGender.Image = pictureBoxPartnerGender.Image = pictureBoxKittyGender.Image = null;
+            petsImages.Clear(); partnersImages.Clear(); kittiesImages.Clear();
 
             listBoxPets.Items.Clear();
-            listBoxCatteries.Items.Clear();
-            listBoxKitties.Items.Clear();
+            CatteriesInfoClear();
+            KittiesInfoClear();
+
+            CheckAndCreateDBPathes();
 
             string dataBase = System.IO.Path.Combine(Application.StartupPath, "catsdb2.db");
             if (File.Exists(dataBase))
@@ -54,9 +76,16 @@ namespace Catteries
                     {
                         cats.Add(new Cat(row));
                         listBoxPets.Items.Add(row["Name"]);
-                        byte[] a = (System.Byte[])row["Image"];
+                        byte[] a = null;
+                        try
+                        {
+                            a = (System.Byte[])row["Image"];
+                        }
+                        catch { }
                         petsImages.Add(a);
                     }
+                    cmd.CommandText = "PRAGMA FOREIGN_KEYS=ON";
+                    cmd.ExecuteNonQuery();
                     connection.Close();
                 }
             }
@@ -80,18 +109,16 @@ namespace Catteries
                 int index = listBoxPets.SelectedIndex;
                 labelPetName.Text = cats[index].Name;
                 labelPetBday.Text = cats[index].BirthDate.ToShortDateString();
-                labelPetColorCode.Text = String.Format("{0} ({1})", cats[index].ColorName, cats[index].ColorCode);
-                labelPetEarsCode.Text = String.Format("{0} ({1})", cats[index].EarsTypeName, cats[index].EarsTypeCode);
+                textBoxPetColorCode.Text = String.Format("Окрас: {0} [{1}]", cats[index].ColorName, cats[index].ColorCode);
+                textBoxPetEarsCode.Text = String.Format("Ушки: {0} [{1}]", cats[index].EarsTypeName, cats[index].EarsTypeCode);
                 pictureBoxPet.Image = ByteToImage(petsImages[index]);
                 if (cats[index].IsMale)
                     pictureBoxPetGender.Image = Properties.Resources.male;
                 else
                     pictureBoxPetGender.Image = Properties.Resources.female;
 
-                listBoxCatteries.Items.Clear();
-                catteries.Clear();
-                partnersImages.Clear();
-                listBoxKitties.Items.Clear();
+                CatteriesInfoClear();
+                KittiesInfoClear();
 
                 string dataBase = System.IO.Path.Combine(Application.StartupPath, "catsdb2.db");
                 if (File.Exists(dataBase))
@@ -192,11 +219,13 @@ namespace Catteries
         {
             if (listBoxCatteries.SelectedIndex != -1)
             {
-                int selectedIndex = listBoxCatteries.SelectedIndex;
-                FormCatInfo fci = new FormCatInfo("cat_partners", "Информация", FormCatInfoModes.PartnerInfo, catteries[selectedIndex]);
-                fci.Image = ByteToImage(partnersImages[selectedIndex]);
-                fci.ShowDialog();
-                listBoxCatteries.SelectedIndex = selectedIndex;
+                int catterySelectedIndex = listBoxCatteries.SelectedIndex;
+                int petSelectedIndex = listBoxPets.SelectedIndex;
+                FormCatInfo fci = new FormCatInfo("cat_partners", "Информация", FormCatInfoModes.PartnerOrKittyInfo, catteries[catterySelectedIndex]);
+                fci.Image = ByteToImage(partnersImages[catterySelectedIndex]);
+                fci.ShowDialog();  
+                listBoxPets_SelectedIndexChanged(sender, e);
+                listBoxCatteries.SelectedIndex = catterySelectedIndex;
             }
         }
 
@@ -206,14 +235,223 @@ namespace Catteries
             {
                 int index = listBoxCatteries.SelectedIndex;
                 labelPartnerName.Text = catteries[index].Partner.Name;
-                labelPartnerEarsCode.Text = String.Format("{0} ({1})", catteries[index].Partner.EarsTypeName, catteries[index].Partner.EarsTypeCode);
-                labelPartnerColorCode.Text = String.Format("{0} ({1})", catteries[index].Partner.ColorName, catteries[index].Partner.ColorCode);
+                textBoxPartnerEarsCode.Text = String.Format("Ушки: {0} [{1}]", catteries[index].Partner.EarsTypeName, catteries[index].Partner.EarsTypeCode);
+                textBoxPartnerColorCode.Text = String.Format("Окрас: {0} [{1}]", catteries[index].Partner.ColorName, catteries[index].Partner.ColorCode);
                 labelPartnerBday.Text = catteries[index].Partner.BirthDate.ToShortDateString();
                 pictureBoxPartner.Image = ByteToImage(partnersImages[index]);
                 if (catteries[index].Partner.IsMale)
                     pictureBoxPartnerGender.Image = Properties.Resources.male;
                 else
                     pictureBoxPartnerGender.Image = Properties.Resources.female;
+
+                KittiesInfoClear();
+
+                string dataBase = System.IO.Path.Combine(Application.StartupPath, "catsdb2.db");
+                if (File.Exists(dataBase))
+                {
+                    using (var connection = new SQLiteConnection(String.Format("Data Source={0};", dataBase)))
+                    {
+                        connection.Open();
+                        SQLiteCommand cmd = new SQLiteCommand("SELECT * FROM 'kitties' WHERE CatteryID = " + catteries[index].Id, connection);
+                        SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
+                        DataSet sds = new DataSet();
+                        sda.Fill(sds);
+                        // TODO: оформить инициализацию котят по строке результата из БД
+                        foreach (DataRow row in sds.Tables[0].Rows)
+                        {
+                            kitties.Add(new Cat(row));
+                            listBoxKitties.Items.Add(string.Format("{0} ({1})", row["Name"], Convert.ToDateTime(row["BirthDate"]).ToShortDateString()));
+                            byte[] buffer = null;
+                            try
+                            {
+                                buffer = (System.Byte[])row["Image"];
+                            }
+                            catch { }
+                            kittiesImages.Add(buffer);
+                        }                        
+                        connection.Close();
+                    }
+                }
+                else
+                    MessageBox.Show("Файл базы данных отсутствует");
+            }
+        }
+
+        private void buttonAddKitty_Click(object sender, EventArgs e)
+        {
+            if (listBoxCatteries.SelectedIndex != -1)
+            {
+                FormCatInfo fci = new FormCatInfo("kitties", "Новый котёнок", FormMain.FormCatInfoModes.NewPartnerOrKitty, catteries[listBoxCatteries.SelectedIndex]);
+                fci.ShowDialog();
+                listBoxCatteries_SelectedIndexChanged(sender, e);
+            }
+        }
+
+        private void buttonChangeKittyInfo_Click(object sender, EventArgs e)
+        {
+            if (listBoxKitties.SelectedIndex != -1)
+            {
+                int kittySelectedIndex = listBoxKitties.SelectedIndex;
+                int catterySelectedIndex = listBoxCatteries.SelectedIndex;
+                FormCatInfo fci = new FormCatInfo("kitties", "Информация", FormCatInfoModes.PartnerOrKittyInfo, kitties[kittySelectedIndex]);
+                fci.Image = ByteToImage(kittiesImages[kittySelectedIndex]);
+                fci.ShowDialog();
+                listBoxCatteries_SelectedIndexChanged(sender, e);
+                listBoxKitties.SelectedIndex = kittySelectedIndex;
+            }
+        }
+
+        private void listBoxKitties_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxKitties.SelectedIndex != -1)
+            {
+                int index = listBoxKitties.SelectedIndex;
+                labelKittyName.Text = kitties[index].Name;
+                labelKittyBday.Text = kitties[index].BirthDate.ToShortDateString();
+                textBoxKittyEarsCode.Text = String.Format("Ушки: {0} [{1}]", kitties[index].EarsTypeName, kitties[index].EarsTypeCode);
+                textBoxKittyColorCode.Text = String.Format("Окрас: {0} [{1}]", kitties[index].ColorName, kitties[index].ColorCode);
+                pictureBoxKitty.Image = ByteToImage(kittiesImages[index]);
+                if (kitties[index].IsMale)
+                    pictureBoxKittyGender.Image = Properties.Resources.male;
+                else
+                    pictureBoxKittyGender.Image = Properties.Resources.female;
+            }
+        }
+
+        private void KittiesInfoClear()
+        {
+            listBoxKitties.Items.Clear();
+            kittiesImages.Clear();
+            kitties.Clear();
+
+            labelKittyBday.Text = textBoxKittyColorCode.Text = 
+                textBoxKittyEarsCode.Text = labelKittyName.Text = string.Empty;
+            pictureBoxKitty.Image = pictureBoxKittyGender.Image = null;
+        }
+
+        private void CatteriesInfoClear()
+        {
+            listBoxCatteries.Items.Clear();
+            catteries.Clear();
+            partnersImages.Clear();
+
+            labelPartnerBday.Text = textBoxKittyColorCode.Text =
+                textBoxKittyEarsCode.Text = labelPartnerName.Text = string.Empty;
+            pictureBoxPartner.Image = pictureBoxPartnerGender.Image = null;
+        }
+
+        private void listBoxPets_MouseDown(object sender, MouseEventArgs e)
+        {
+            ShowContextMenu(listBoxPets, "pets", sender, e);
+        }
+
+        private void listBoxCatteries_MouseDown(object sender, MouseEventArgs e)
+        {
+            ShowContextMenu(listBoxCatteries, "catteries", sender, e);
+        }
+
+        private void listBoxKitties_MouseDown(object sender, MouseEventArgs e)
+        {
+            ShowContextMenu(listBoxKitties, "kitties", sender, e);
+        }
+
+        /// <summary>
+        /// Показать контекстное меню для определенного листбокса
+        /// </summary>
+        /// <param name="lb">Листбокс</param>
+        /// <param name="lbName">Имя режима</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowContextMenu(ListBox lb, string lbName, object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                int y = e.Y / lb.ItemHeight;
+            
+                if (y < lb.Items.Count)
+                    lb.SelectedIndex = lb.TopIndex + y;
+            
+                if (lb.SelectedIndex != -1)
+                {
+                    switch (lbName)
+                    {
+                        case "pets":
+                            contextMenuStripPet.Show(Cursor.Position);
+                            break;
+                        case "catteries":
+                            contextMenuStripCattery.Show(Cursor.Position);
+                            break;
+                        case "kitties":
+                            contextMenuStripKitty.Show(Cursor.Position);
+                            break;
+                    }                    
+                }
+            }
+        }
+
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Удалить питомца " + labelPetName.Text + "?\nПри этом будет удалена вся информация о вязках и котятах этих вязок",
+                "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                string dataBase = System.IO.Path.Combine(Application.StartupPath, "catsdb2.db");
+                if (File.Exists(dataBase))
+                {
+                    using (var connection = new SQLiteConnection(String.Format("Data Source={0};", dataBase)))
+                    {
+                        connection.Open();
+                        SQLiteCommand cmd = new SQLiteCommand("PRAGMA FOREIGN_KEYS=ON", connection);
+                        cmd.ExecuteNonQuery();
+                        cmd.CommandText = "DELETE FROM 'my_pets' WHERE ID = " + cats[listBoxPets.SelectedIndex].Id;
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+                Initialize();
+            }
+        }
+
+        private void удалитьВыбраннуюВязкуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Удалить вязку " + listBoxCatteries.SelectedItem.ToString() + "?\nПри этом будет удалена вся информация о котятах этой вязки",
+                "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                string dataBase = System.IO.Path.Combine(Application.StartupPath, "catsdb2.db");
+                if (File.Exists(dataBase))
+                {
+                    using (var connection = new SQLiteConnection(String.Format("Data Source={0};", dataBase)))
+                    {
+                        connection.Open();
+                        SQLiteCommand cmd = new SQLiteCommand("PRAGMA FOREIGN_KEYS=ON", connection);
+                        cmd.ExecuteNonQuery();
+                        cmd.CommandText = "DELETE FROM 'catteries' WHERE ID = " + catteries[listBoxCatteries.SelectedIndex].Id;
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+                Initialize();
+            }
+        }
+
+        private void удалитьВыбранногоКотёнкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Удалить котенка " + labelKittyName.Text + "?",
+                "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                string dataBase = System.IO.Path.Combine(Application.StartupPath, "catsdb2.db");
+                if (File.Exists(dataBase))
+                {
+                    using (var connection = new SQLiteConnection(String.Format("Data Source={0};", dataBase)))
+                    {
+                        connection.Open();
+                        SQLiteCommand cmd = new SQLiteCommand("PRAGMA FOREIGN_KEYS=ON", connection);
+                        cmd.ExecuteNonQuery();
+                        cmd.CommandText = "DELETE FROM 'kitties' WHERE ID = " + kitties[listBoxKitties.SelectedIndex].Id;
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+                Initialize();
             }
         }
     }

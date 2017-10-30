@@ -117,6 +117,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\catsdb.db" />
     <None Include="Resources\female.png" />
   </ItemGroup>
   <ItemGroup>

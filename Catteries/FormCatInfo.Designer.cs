@@ -48,12 +48,12 @@
             this.buttonPhoto = new System.Windows.Forms.Button();
             this.textBoxColorName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBoxEarsName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.radioButtonMale = new System.Windows.Forms.RadioButton();
             this.radioButtonFemale = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.comboBoxEarsName = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -233,14 +233,6 @@
             this.label8.TabIndex = 9;
             this.label8.Text = "Окрас:";
             // 
-            // textBoxEarsName
-            // 
-            this.textBoxEarsName.Location = new System.Drawing.Point(217, 65);
-            this.textBoxEarsName.Name = "textBoxEarsName";
-            this.textBoxEarsName.Size = new System.Drawing.Size(132, 20);
-            this.textBoxEarsName.TabIndex = 5;
-            this.textBoxEarsName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -292,14 +284,27 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // comboBoxEarsName
+            // 
+            this.comboBoxEarsName.FormattingEnabled = true;
+            this.comboBoxEarsName.Items.AddRange(new object[] {
+            "Страйт (прямые)",
+            "Керл (закручены назад)",
+            "Фолд (закручены вперед)"});
+            this.comboBoxEarsName.Location = new System.Drawing.Point(217, 65);
+            this.comboBoxEarsName.Name = "comboBoxEarsName";
+            this.comboBoxEarsName.Size = new System.Drawing.Size(132, 21);
+            this.comboBoxEarsName.TabIndex = 15;
+            this.comboBoxEarsName.SelectedIndexChanged += new System.EventHandler(this.comboBoxEarsName_SelectedIndexChanged);
+            // 
             // FormCatInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(574, 263);
+            this.Controls.Add(this.comboBoxEarsName);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBoxEarsName);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBoxColorName);
             this.Controls.Add(this.buttonPhoto);
@@ -352,10 +357,10 @@
         private System.Windows.Forms.Button buttonPhoto;
         private System.Windows.Forms.TextBox textBoxColorName;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBoxEarsName;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton radioButtonMale;
         private System.Windows.Forms.RadioButton radioButtonFemale;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox comboBoxEarsName;
     }
 }
