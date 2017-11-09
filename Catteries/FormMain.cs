@@ -20,7 +20,7 @@ namespace Catteries
         List<byte[]> petsImages = new List<byte[]>();         // изображения питомцев
         List<byte[]> partnersImages = new List<byte[]>();     // изображения партнеров
         List<byte[]> kittiesImages = new List<byte[]>();     // изображения котят
-        public enum FormCatInfoModes { NewPet, NewPartnerOrKitty, PartnerOrKittyInfo, ChangeInfo, NewItem };    // режимы запуска окна с информацией о кошке
+        public enum FormCatInfoModes { NewPet, NewPartnerOrKitty, PartnerOrKittyInfo, ChangeInfo, NewItem, Edit };    // режимы запуска окна с информацией о кошке
 
         public FormMain()
         {
@@ -453,6 +453,12 @@ namespace Catteries
                 }
                 Initialize();
             }
+        }
+
+        private void редакторToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCatInfo fci = new FormCatInfo("my_pets", "Редактирование элементов", FormCatInfoModes.Edit);
+            fci.ShowDialog();
         }
     }
 }

@@ -33,15 +33,23 @@
             this.panelPets = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.textBoxPetEarsCode = new System.Windows.Forms.TextBox();
+            this.textBoxPetColorCode = new System.Windows.Forms.TextBox();
+            this.pictureBoxPetGender = new System.Windows.Forms.PictureBox();
             this.buttonAddCatPartner = new System.Windows.Forms.Button();
+            this.pictureBoxPet = new System.Windows.Forms.PictureBox();
             this.buttonChangePetInfo = new System.Windows.Forms.Button();
             this.labelPetBday = new System.Windows.Forms.Label();
             this.labelPetName = new System.Windows.Forms.Label();
             this.listBoxPets = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.textBoxPartnerEarsCode = new System.Windows.Forms.TextBox();
+            this.textBoxPartnerColorCode = new System.Windows.Forms.TextBox();
+            this.pictureBoxPartnerGender = new System.Windows.Forms.PictureBox();
             this.buttonPartnerInfo = new System.Windows.Forms.Button();
             this.buttonAddKitty = new System.Windows.Forms.Button();
+            this.pictureBoxPartner = new System.Windows.Forms.PictureBox();
             this.buttonChangePartnerInfo = new System.Windows.Forms.Button();
             this.labelPartnerBday = new System.Windows.Forms.Label();
             this.labelPartnerName = new System.Windows.Forms.Label();
@@ -49,6 +57,10 @@
             this.listBoxCatteries = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.textBoxKittyEarsCode = new System.Windows.Forms.TextBox();
+            this.textBoxKittyColorCode = new System.Windows.Forms.TextBox();
+            this.pictureBoxKittyGender = new System.Windows.Forms.PictureBox();
+            this.pictureBoxKitty = new System.Windows.Forms.PictureBox();
             this.buttonChangeKittyInfo = new System.Windows.Forms.Button();
             this.labelKittyBday = new System.Windows.Forms.Label();
             this.labelKittyName = new System.Windows.Forms.Label();
@@ -56,41 +68,30 @@
             this.listBoxKitties = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.новыйПитомецToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBoxPetColorCode = new System.Windows.Forms.TextBox();
-            this.textBoxPetEarsCode = new System.Windows.Forms.TextBox();
-            this.textBoxPartnerColorCode = new System.Windows.Forms.TextBox();
-            this.textBoxPartnerEarsCode = new System.Windows.Forms.TextBox();
-            this.textBoxKittyColorCode = new System.Windows.Forms.TextBox();
-            this.textBoxKittyEarsCode = new System.Windows.Forms.TextBox();
             this.contextMenuStripPet = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripCattery = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextMenuStripKitty = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.удалитьВыбраннуюВязкуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripKitty = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.удалитьВыбранногоКотёнкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBoxPetGender = new System.Windows.Forms.PictureBox();
-            this.pictureBoxPet = new System.Windows.Forms.PictureBox();
-            this.pictureBoxPartnerGender = new System.Windows.Forms.PictureBox();
-            this.pictureBoxPartner = new System.Windows.Forms.PictureBox();
-            this.pictureBoxKittyGender = new System.Windows.Forms.PictureBox();
-            this.pictureBoxKitty = new System.Windows.Forms.PictureBox();
+            this.редакторToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanelMain.SuspendLayout();
             this.panelPets.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPetGender)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPet)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPartnerGender)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPartner)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKittyGender)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKitty)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStripPet.SuspendLayout();
             this.contextMenuStripCattery.SuspendLayout();
             this.contextMenuStripKitty.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPetGender)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPartnerGender)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPartner)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKittyGender)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKitty)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelMain
@@ -149,6 +150,42 @@
             this.panel3.Size = new System.Drawing.Size(273, 156);
             this.panel3.TabIndex = 1;
             // 
+            // textBoxPetEarsCode
+            // 
+            this.textBoxPetEarsCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxPetEarsCode.BackColor = System.Drawing.Color.White;
+            this.textBoxPetEarsCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPetEarsCode.Location = new System.Drawing.Point(124, 83);
+            this.textBoxPetEarsCode.Multiline = true;
+            this.textBoxPetEarsCode.Name = "textBoxPetEarsCode";
+            this.textBoxPetEarsCode.ReadOnly = true;
+            this.textBoxPetEarsCode.Size = new System.Drawing.Size(146, 30);
+            this.textBoxPetEarsCode.TabIndex = 5;
+            // 
+            // textBoxPetColorCode
+            // 
+            this.textBoxPetColorCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxPetColorCode.BackColor = System.Drawing.Color.White;
+            this.textBoxPetColorCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPetColorCode.Location = new System.Drawing.Point(124, 36);
+            this.textBoxPetColorCode.Multiline = true;
+            this.textBoxPetColorCode.Name = "textBoxPetColorCode";
+            this.textBoxPetColorCode.ReadOnly = true;
+            this.textBoxPetColorCode.Size = new System.Drawing.Size(146, 41);
+            this.textBoxPetColorCode.TabIndex = 5;
+            // 
+            // pictureBoxPetGender
+            // 
+            this.pictureBoxPetGender.Location = new System.Drawing.Point(243, 0);
+            this.pictureBoxPetGender.Name = "pictureBoxPetGender";
+            this.pictureBoxPetGender.Size = new System.Drawing.Size(30, 30);
+            this.pictureBoxPetGender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxPetGender.TabIndex = 4;
+            this.pictureBoxPetGender.TabStop = false;
+            // 
             // buttonAddCatPartner
             // 
             this.buttonAddCatPartner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -159,6 +196,18 @@
             this.buttonAddCatPartner.Text = "Добавить вязку";
             this.buttonAddCatPartner.UseVisualStyleBackColor = true;
             this.buttonAddCatPartner.Click += new System.EventHandler(this.buttonAddCatPartner_Click);
+            // 
+            // pictureBoxPet
+            // 
+            this.pictureBoxPet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBoxPet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxPet.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxPet.Name = "pictureBoxPet";
+            this.pictureBoxPet.Size = new System.Drawing.Size(115, 110);
+            this.pictureBoxPet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxPet.TabIndex = 1;
+            this.pictureBoxPet.TabStop = false;
             // 
             // buttonChangePetInfo
             // 
@@ -234,6 +283,42 @@
             this.panel4.Size = new System.Drawing.Size(273, 156);
             this.panel4.TabIndex = 3;
             // 
+            // textBoxPartnerEarsCode
+            // 
+            this.textBoxPartnerEarsCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxPartnerEarsCode.BackColor = System.Drawing.Color.White;
+            this.textBoxPartnerEarsCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPartnerEarsCode.Location = new System.Drawing.Point(124, 83);
+            this.textBoxPartnerEarsCode.Multiline = true;
+            this.textBoxPartnerEarsCode.Name = "textBoxPartnerEarsCode";
+            this.textBoxPartnerEarsCode.ReadOnly = true;
+            this.textBoxPartnerEarsCode.Size = new System.Drawing.Size(146, 30);
+            this.textBoxPartnerEarsCode.TabIndex = 5;
+            // 
+            // textBoxPartnerColorCode
+            // 
+            this.textBoxPartnerColorCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxPartnerColorCode.BackColor = System.Drawing.Color.White;
+            this.textBoxPartnerColorCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPartnerColorCode.Location = new System.Drawing.Point(124, 36);
+            this.textBoxPartnerColorCode.Multiline = true;
+            this.textBoxPartnerColorCode.Name = "textBoxPartnerColorCode";
+            this.textBoxPartnerColorCode.ReadOnly = true;
+            this.textBoxPartnerColorCode.Size = new System.Drawing.Size(146, 41);
+            this.textBoxPartnerColorCode.TabIndex = 5;
+            // 
+            // pictureBoxPartnerGender
+            // 
+            this.pictureBoxPartnerGender.Location = new System.Drawing.Point(243, 0);
+            this.pictureBoxPartnerGender.Name = "pictureBoxPartnerGender";
+            this.pictureBoxPartnerGender.Size = new System.Drawing.Size(30, 30);
+            this.pictureBoxPartnerGender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxPartnerGender.TabIndex = 4;
+            this.pictureBoxPartnerGender.TabStop = false;
+            // 
             // buttonPartnerInfo
             // 
             this.buttonPartnerInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -255,6 +340,18 @@
             this.buttonAddKitty.Text = "Добавить котят";
             this.buttonAddKitty.UseVisualStyleBackColor = true;
             this.buttonAddKitty.Click += new System.EventHandler(this.buttonAddKitty_Click);
+            // 
+            // pictureBoxPartner
+            // 
+            this.pictureBoxPartner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBoxPartner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxPartner.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxPartner.Name = "pictureBoxPartner";
+            this.pictureBoxPartner.Size = new System.Drawing.Size(115, 110);
+            this.pictureBoxPartner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxPartner.TabIndex = 1;
+            this.pictureBoxPartner.TabStop = false;
             // 
             // buttonChangePartnerInfo
             // 
@@ -338,6 +435,54 @@
             this.panel5.Size = new System.Drawing.Size(274, 156);
             this.panel5.TabIndex = 2;
             // 
+            // textBoxKittyEarsCode
+            // 
+            this.textBoxKittyEarsCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxKittyEarsCode.BackColor = System.Drawing.Color.White;
+            this.textBoxKittyEarsCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxKittyEarsCode.Location = new System.Drawing.Point(125, 83);
+            this.textBoxKittyEarsCode.Multiline = true;
+            this.textBoxKittyEarsCode.Name = "textBoxKittyEarsCode";
+            this.textBoxKittyEarsCode.ReadOnly = true;
+            this.textBoxKittyEarsCode.Size = new System.Drawing.Size(146, 30);
+            this.textBoxKittyEarsCode.TabIndex = 5;
+            // 
+            // textBoxKittyColorCode
+            // 
+            this.textBoxKittyColorCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxKittyColorCode.BackColor = System.Drawing.Color.White;
+            this.textBoxKittyColorCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxKittyColorCode.Location = new System.Drawing.Point(125, 36);
+            this.textBoxKittyColorCode.Multiline = true;
+            this.textBoxKittyColorCode.Name = "textBoxKittyColorCode";
+            this.textBoxKittyColorCode.ReadOnly = true;
+            this.textBoxKittyColorCode.Size = new System.Drawing.Size(146, 41);
+            this.textBoxKittyColorCode.TabIndex = 5;
+            // 
+            // pictureBoxKittyGender
+            // 
+            this.pictureBoxKittyGender.Location = new System.Drawing.Point(244, 0);
+            this.pictureBoxKittyGender.Name = "pictureBoxKittyGender";
+            this.pictureBoxKittyGender.Size = new System.Drawing.Size(30, 30);
+            this.pictureBoxKittyGender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxKittyGender.TabIndex = 4;
+            this.pictureBoxKittyGender.TabStop = false;
+            // 
+            // pictureBoxKitty
+            // 
+            this.pictureBoxKitty.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBoxKitty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxKitty.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxKitty.Name = "pictureBoxKitty";
+            this.pictureBoxKitty.Size = new System.Drawing.Size(115, 110);
+            this.pictureBoxKitty.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxKitty.TabIndex = 1;
+            this.pictureBoxKitty.TabStop = false;
+            // 
             // buttonChangeKittyInfo
             // 
             this.buttonChangeKittyInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -395,7 +540,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.новыйПитомецToolStripMenuItem});
+            this.новыйПитомецToolStripMenuItem,
+            this.редакторToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(838, 24);
@@ -408,87 +554,6 @@
             this.новыйПитомецToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
             this.новыйПитомецToolStripMenuItem.Text = "Новый питомец";
             this.новыйПитомецToolStripMenuItem.Click += new System.EventHandler(this.новыйПитомецToolStripMenuItem_Click);
-            // 
-            // textBoxPetColorCode
-            // 
-            this.textBoxPetColorCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPetColorCode.BackColor = System.Drawing.Color.White;
-            this.textBoxPetColorCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPetColorCode.Location = new System.Drawing.Point(124, 36);
-            this.textBoxPetColorCode.Multiline = true;
-            this.textBoxPetColorCode.Name = "textBoxPetColorCode";
-            this.textBoxPetColorCode.ReadOnly = true;
-            this.textBoxPetColorCode.Size = new System.Drawing.Size(146, 41);
-            this.textBoxPetColorCode.TabIndex = 5;
-            // 
-            // textBoxPetEarsCode
-            // 
-            this.textBoxPetEarsCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPetEarsCode.BackColor = System.Drawing.Color.White;
-            this.textBoxPetEarsCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPetEarsCode.Location = new System.Drawing.Point(124, 83);
-            this.textBoxPetEarsCode.Multiline = true;
-            this.textBoxPetEarsCode.Name = "textBoxPetEarsCode";
-            this.textBoxPetEarsCode.ReadOnly = true;
-            this.textBoxPetEarsCode.Size = new System.Drawing.Size(146, 30);
-            this.textBoxPetEarsCode.TabIndex = 5;
-            // 
-            // textBoxPartnerColorCode
-            // 
-            this.textBoxPartnerColorCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPartnerColorCode.BackColor = System.Drawing.Color.White;
-            this.textBoxPartnerColorCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPartnerColorCode.Location = new System.Drawing.Point(124, 36);
-            this.textBoxPartnerColorCode.Multiline = true;
-            this.textBoxPartnerColorCode.Name = "textBoxPartnerColorCode";
-            this.textBoxPartnerColorCode.ReadOnly = true;
-            this.textBoxPartnerColorCode.Size = new System.Drawing.Size(146, 41);
-            this.textBoxPartnerColorCode.TabIndex = 5;
-            // 
-            // textBoxPartnerEarsCode
-            // 
-            this.textBoxPartnerEarsCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPartnerEarsCode.BackColor = System.Drawing.Color.White;
-            this.textBoxPartnerEarsCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPartnerEarsCode.Location = new System.Drawing.Point(124, 83);
-            this.textBoxPartnerEarsCode.Multiline = true;
-            this.textBoxPartnerEarsCode.Name = "textBoxPartnerEarsCode";
-            this.textBoxPartnerEarsCode.ReadOnly = true;
-            this.textBoxPartnerEarsCode.Size = new System.Drawing.Size(146, 30);
-            this.textBoxPartnerEarsCode.TabIndex = 5;
-            // 
-            // textBoxKittyColorCode
-            // 
-            this.textBoxKittyColorCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxKittyColorCode.BackColor = System.Drawing.Color.White;
-            this.textBoxKittyColorCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxKittyColorCode.Location = new System.Drawing.Point(125, 36);
-            this.textBoxKittyColorCode.Multiline = true;
-            this.textBoxKittyColorCode.Name = "textBoxKittyColorCode";
-            this.textBoxKittyColorCode.ReadOnly = true;
-            this.textBoxKittyColorCode.Size = new System.Drawing.Size(146, 41);
-            this.textBoxKittyColorCode.TabIndex = 5;
-            // 
-            // textBoxKittyEarsCode
-            // 
-            this.textBoxKittyEarsCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxKittyEarsCode.BackColor = System.Drawing.Color.White;
-            this.textBoxKittyEarsCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxKittyEarsCode.Location = new System.Drawing.Point(125, 83);
-            this.textBoxKittyEarsCode.Multiline = true;
-            this.textBoxKittyEarsCode.Name = "textBoxKittyEarsCode";
-            this.textBoxKittyEarsCode.ReadOnly = true;
-            this.textBoxKittyEarsCode.Size = new System.Drawing.Size(146, 30);
-            this.textBoxKittyEarsCode.TabIndex = 5;
             // 
             // contextMenuStripPet
             // 
@@ -511,19 +576,19 @@
             this.contextMenuStripCattery.Name = "contextMenuStripCattery";
             this.contextMenuStripCattery.Size = new System.Drawing.Size(219, 26);
             // 
-            // contextMenuStripKitty
-            // 
-            this.contextMenuStripKitty.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.удалитьВыбранногоКотёнкаToolStripMenuItem});
-            this.contextMenuStripKitty.Name = "contextMenuStripKitty";
-            this.contextMenuStripKitty.Size = new System.Drawing.Size(236, 48);
-            // 
             // удалитьВыбраннуюВязкуToolStripMenuItem
             // 
             this.удалитьВыбраннуюВязкуToolStripMenuItem.Name = "удалитьВыбраннуюВязкуToolStripMenuItem";
             this.удалитьВыбраннуюВязкуToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.удалитьВыбраннуюВязкуToolStripMenuItem.Text = "Удалить выбранную вязку";
             this.удалитьВыбраннуюВязкуToolStripMenuItem.Click += new System.EventHandler(this.удалитьВыбраннуюВязкуToolStripMenuItem_Click);
+            // 
+            // contextMenuStripKitty
+            // 
+            this.contextMenuStripKitty.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.удалитьВыбранногоКотёнкаToolStripMenuItem});
+            this.contextMenuStripKitty.Name = "contextMenuStripKitty";
+            this.contextMenuStripKitty.Size = new System.Drawing.Size(236, 26);
             // 
             // удалитьВыбранногоКотёнкаToolStripMenuItem
             // 
@@ -532,68 +597,12 @@
             this.удалитьВыбранногоКотёнкаToolStripMenuItem.Text = "Удалить выбранного котёнка";
             this.удалитьВыбранногоКотёнкаToolStripMenuItem.Click += new System.EventHandler(this.удалитьВыбранногоКотёнкаToolStripMenuItem_Click);
             // 
-            // pictureBoxPetGender
+            // редакторToolStripMenuItem
             // 
-            this.pictureBoxPetGender.Location = new System.Drawing.Point(243, 0);
-            this.pictureBoxPetGender.Name = "pictureBoxPetGender";
-            this.pictureBoxPetGender.Size = new System.Drawing.Size(30, 30);
-            this.pictureBoxPetGender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxPetGender.TabIndex = 4;
-            this.pictureBoxPetGender.TabStop = false;
-            // 
-            // pictureBoxPet
-            // 
-            this.pictureBoxPet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBoxPet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxPet.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxPet.Name = "pictureBoxPet";
-            this.pictureBoxPet.Size = new System.Drawing.Size(115, 110);
-            this.pictureBoxPet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxPet.TabIndex = 1;
-            this.pictureBoxPet.TabStop = false;
-            // 
-            // pictureBoxPartnerGender
-            // 
-            this.pictureBoxPartnerGender.Location = new System.Drawing.Point(243, 0);
-            this.pictureBoxPartnerGender.Name = "pictureBoxPartnerGender";
-            this.pictureBoxPartnerGender.Size = new System.Drawing.Size(30, 30);
-            this.pictureBoxPartnerGender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxPartnerGender.TabIndex = 4;
-            this.pictureBoxPartnerGender.TabStop = false;
-            // 
-            // pictureBoxPartner
-            // 
-            this.pictureBoxPartner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBoxPartner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxPartner.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxPartner.Name = "pictureBoxPartner";
-            this.pictureBoxPartner.Size = new System.Drawing.Size(115, 110);
-            this.pictureBoxPartner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxPartner.TabIndex = 1;
-            this.pictureBoxPartner.TabStop = false;
-            // 
-            // pictureBoxKittyGender
-            // 
-            this.pictureBoxKittyGender.Location = new System.Drawing.Point(244, 0);
-            this.pictureBoxKittyGender.Name = "pictureBoxKittyGender";
-            this.pictureBoxKittyGender.Size = new System.Drawing.Size(30, 30);
-            this.pictureBoxKittyGender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxKittyGender.TabIndex = 4;
-            this.pictureBoxKittyGender.TabStop = false;
-            // 
-            // pictureBoxKitty
-            // 
-            this.pictureBoxKitty.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBoxKitty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxKitty.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxKitty.Name = "pictureBoxKitty";
-            this.pictureBoxKitty.Size = new System.Drawing.Size(115, 110);
-            this.pictureBoxKitty.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxKitty.TabIndex = 1;
-            this.pictureBoxKitty.TabStop = false;
+            this.редакторToolStripMenuItem.Name = "редакторToolStripMenuItem";
+            this.редакторToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.редакторToolStripMenuItem.Text = "Редактор";
+            this.редакторToolStripMenuItem.Click += new System.EventHandler(this.редакторToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -610,25 +619,25 @@
             this.panelPets.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPetGender)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPet)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPartnerGender)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPartner)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKittyGender)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKitty)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.contextMenuStripPet.ResumeLayout(false);
             this.contextMenuStripCattery.ResumeLayout(false);
             this.contextMenuStripKitty.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPetGender)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPartnerGender)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPartner)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKittyGender)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKitty)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -681,6 +690,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripKitty;
         private System.Windows.Forms.ToolStripMenuItem удалитьВыбраннуюВязкуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьВыбранногоКотёнкаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem редакторToolStripMenuItem;
     }
 }
 
